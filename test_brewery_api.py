@@ -7,7 +7,7 @@ class TestApiBreweries:
 
     def test_search_by_name(self):
         search_query = 'Jacket'
-        _url = self.base_url + f"/search?query={search_query}"
+        _url = f"{self.base_url}/search?query={search_query}"
         r = requests.get(_url)
         assert r.status_code == 200
         response = r.json()
@@ -34,7 +34,6 @@ class TestApiBreweries:
         r = requests.get(_url)
         assert r.status_code == 200
         response = r.json()
-        print(response)
         assert response['id'] == brew_id
 
     @pytest.mark.parametrize('brew_id', [-1, 0, 'text'])
